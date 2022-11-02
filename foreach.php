@@ -1,6 +1,7 @@
 <?php
 //With foreach we can loop through arrays and print out values.
-
+//We grab the array and then we make a new variable to represent each key / index.
+//$number will be our array containing numbers and $number will be each number from the array.
 $numbers = [0, 15, 22, 55];
 foreach ($numbers as $number) {
     echo $number . "<br />";
