@@ -22,6 +22,14 @@ while($myNumber < $target) {
     $myNumber = $myNumber + 1;
 }
 
+$count = 1;
+while ($count < 101) {
+  if ($count % 33 === 0) {
+  echo $count." is divisible by 33\n";
+  }
+  $count++;
+}
+
 /* Infinite loop
 An infinite loop will run forever and that's because
 the condition will be always true.
