@@ -6,7 +6,7 @@ Passing parameters will help us keep the structure or logic inside the function 
 */
 
 function echoMessage($message) {
-    echo $message;
+    return $message;
 }
 echoMessage("Hi can you please print this out for me?");
 
@@ -22,7 +22,7 @@ to be used in the easiest way possible.
 //Then inside the function we add the two variables and print out the sum.
 function calcThis($firstNumber, $secondNumber) {
     $sum = $firstNumber + $secondNumber;
-    echo $sum;
+    return $sum;
 }
 
 //Now we can call the function, pass the parameters and we should get 50 (15+35)

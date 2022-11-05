@@ -26,5 +26,12 @@ echo OLDARRAYCONST[0]; // <-- Prints: apple
 echo "<br />";
 
 //or
-define ("OLDARRAYCONST_", ["apple", "bannana", "grape"]);
+define("OLDARRAYCONST_", ["apple", "bannana", "grape"]);
 echo OLDARRAYCONST_[0]; // <-- Prints: apple
+
+echo "<br />";
+define("DEBUG", true);
+
+if (DEBUG) {
+    echo "show this if debug is true.";
+}

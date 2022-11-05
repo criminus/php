@@ -6,7 +6,7 @@ We will create our calculator again for this example.
 //Creating the function
 function calcThis($firstNumber, $secondNumber) {
     $sum = $firstNumber + $secondNumber;
-    echo $sum; // In this case we can also use return $sum; instead of echo $sum;
+    return $sum; // In this case we can also use return $sum; instead of echo $sum;
 }
 
 //We assign the function to the variable
