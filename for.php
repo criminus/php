@@ -1,6 +1,6 @@
 <?php
 /* A FOR loop is very similar to a while loop.
-but for a FOR loop we need to parse 3 things.
+but for a FOR loop we need to pass 3 things.
 The index (where the count starts from) / the condition / increment. 
 The variable / counter goes inside the FOR loop instead (for the while loop we had
 the counter outside the loop).
