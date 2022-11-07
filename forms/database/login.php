@@ -1,10 +1,17 @@
 <?php
+//Check form basic stuff
+function formProcess() {
+    if (isset($_POST['submit'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    echo $username . $password;
+        //if username and passwords are set
+        if ($username && $password) {
+            echo '<div class="alert alert-success" role="alert">Your details are correct. You will be redirected in 3 seconds.</div>';
+        } else {
+            echo '<div class="alert alert-danger" role="alert">Your inputs are empty!</div>';
+        }
+    }
 }
 
 ?>
@@ -34,6 +41,8 @@ if (isset($_POST['submit'])) {
             </div>
             <input class="btd btn-primary" type="submit" name="submit" value="Submit">
         </form>
+        <br />
+        <?php formProcess(); ?>
     </div>
  </div>
 </body>
