@@ -15,3 +15,10 @@ foreach ($numbers as $number) {
     $number++;
     echo "The new value for each index is: $number<br />";
 }
+
+echo "<br />";
+
+$anotherArray = ['BANANA' => 'Banană', 'APPLE' => 'Măr', 'ORANGE' => 'Portocală'];
+foreach ($anotherArray as $fruits => $val) {
+    echo "$fruits => $val<br />";
+}
