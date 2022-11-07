@@ -1,5 +1,6 @@
 <?php
 
+//Here we grab the data from external_form.php and receive it in this external page.
 function errorMessage($errorMsg) {
     echo "<p style='color:red;'>$errorMsg</p>";
     return $errorMsg;
@@ -36,23 +37,4 @@ if (isset($_POST['submit'])) {
         successMessage("Form sent. Your username is <strong>$username</strong> with the password <strong>$password</strong>.");
     }
 }
-?>
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
-</head>
-<body>
-<form action="form.php" method="post">
-    <input type="username" name="username" placeholder="">
-    <input type="password" name="password" placeholder="">
-    <input type="password" name="repassword" placeholder="">
-    <input type="submit" name="submit">
-</form>  
-</body>
-</html>
