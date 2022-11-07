@@ -17,22 +17,29 @@ function formProcess() {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        if ($username && $password) {
+        //Check if username is already in the database.
+        $checkUser = "SELECT username FROM users WHERE username='{$username}'";
+        $usrCheck = mysqli_query($connection, $checkUser) or die('Query failed' . mysqli_error());
+
+        //if any username found don't proceed.
+        if (mysqli_num_rows($usrCheck) > 0) {
+            echo '<div class="alert alert-danger" role="alert">This username already exist! Please use another one.</div>';
+        } elseif ($username && $password) { //if username and password are valid then send the data
             $insert = "INSERT INTO users(username, password) ";
             $insert .= "VALUES ('$username', '$password')";
-            $result = mysqli_query($connection, $insert);
-    
+            $result = mysqli_query($connection, $insert) or die('Query failed' . mysqli_error());
+
             if (!$result) {
-                die('Query failed' . mysqli_error());
+                echo "Something went wrong!";
             }
 
             echo '<div class="alert alert-success" role="alert">Your details are correct. Your account was saved in the database.</div>';
 
-        } elseif (strlen($username) < UMINLEN){
+        } elseif (strlen($username) < UMINLEN){ //If username is shorter than min value skip
             echo '<div class="alert alert-danger" role="alert">Your username can\'t be shorter than ' . UMINLEN . ' characters!</div>';
-        } elseif (strlen($password) < PWDMINLEN) {
+        } elseif (strlen($password) < PWDMINLEN) { //If password is shorter than min value skip
             echo '<div class="alert alert-danger" role="alert">Your password can\'t be shorter than ' . PWDMINLEN . ' characters!</div>';
-        } else {
+        } else { //If anything else skip and return error message.
             echo '<div class="alert alert-danger" role="alert">Something went wrong! Contact the administrator.</div>';
         }
     }
