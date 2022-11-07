@@ -4,5 +4,5 @@ $connection = mysqli_connect('localhost', 'root', '', 'login_project');
 if ($connection) {
     echo "Connection successfully!";
 } else {
-    echo "Can't connect to the database...";
+    die("Can't connect to the database...");
 }

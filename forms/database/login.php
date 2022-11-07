@@ -13,7 +13,6 @@ function formProcess() {
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
