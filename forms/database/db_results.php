@@ -8,7 +8,7 @@ while($row = mysqli_fetch_assoc($result)) {
     ?>
     <pre>
     <?php
-    echo "usr: " . $row['username'] . " pwd: " . $row['password'];
+    echo "uid: ". $row['id'] . " usr: " . $row['username'] . " pwd: " . $row['password'];
     ?>
     </pre>
     <?php

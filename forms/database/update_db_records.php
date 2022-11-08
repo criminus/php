@@ -1,7 +1,6 @@
 <?php
 
-const UMINLEN = 4;
-const PWDMINLEN = 5;
+include('functions.php');
 
 function welcomeMessage() {
     echo '<div class="alert alert-primary" role="alert">
@@ -10,40 +9,9 @@ function welcomeMessage() {
 }
 
 function formProcess() {
-    //include config.php to connect to database.
-    include('config.php');
-
-    if (isset($_POST['submit'])) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        //Check if username is already in the database.
-        $checkUser = "SELECT username FROM users WHERE username='{$username}'";
-        $usrCheck = mysqli_query($connection, $checkUser) or die('Query failed' . mysqli_error($connection));
-
-        //if any username found don't proceed.
-        if (mysqli_num_rows($usrCheck) > 0) {
-            echo '<div class="alert alert-danger" role="alert">This username already exist! Please use another one.</div>';
-        } elseif ($username && $password) { //if username and password are valid then send the data
-            $insert = "INSERT INTO users(username, password) ";
-            $insert .= "VALUES ('$username', '$password')";
-            $result = mysqli_query($connection, $insert) or die('Query failed' . mysqli_error($connection));
-
-            if (!$result) {
-                echo "Something went wrong!";
-            }
-
-            echo '<div class="alert alert-success" role="alert">Your details are correct. Your account was saved in the database.</div>';
-
-        } elseif (strlen($username) < UMINLEN){ //If username is shorter than min value skip
-            echo '<div class="alert alert-danger" role="alert">Your username can\'t be shorter than ' . UMINLEN . ' characters!</div>';
-        } elseif (strlen($password) < PWDMINLEN) { //If password is shorter than min value skip
-            echo '<div class="alert alert-danger" role="alert">Your password can\'t be shorter than ' . PWDMINLEN . ' characters!</div>';
-        } else { //If anything else skip and return error message.
-            echo '<div class="alert alert-danger" role="alert">Something went wrong! Contact the administrator.</div>';
-        }
-    }
+    return;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +20,7 @@ function formProcess() {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Register page</title>
-
+    <title>Update records</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <style>
@@ -113,8 +80,9 @@ body {
 }
 </style>
 </head>
+<body>
 <body class="text-center bg-dark">
-        <form class="bg-light p-5 shadow rounded form-signin" role="form" action="register.php" method="post">
+        <form class="bg-light p-5 shadow rounded form-signin" role="form" action="update_db_records.php" method="post">
         <?php welcomeMessage(); ?>
             <div class="form-group">
                 <label for="username">Username</label>
@@ -124,10 +92,16 @@ body {
                 <label for="password">Password</label>
                 <input type="password" name="password" class="form-control">
             </div>
+            <div class="form-group">
+            <select name="id" id="id">
+                <?php getUserIds(); ?>
+            </select>
+            </div>
             <input class="btd btn-primary" type="submit" name="submit" value="Submit">
             <br />
             <br />
         <?php formProcess(); ?>
         </form>
+</body> 
 </body>
 </html>
